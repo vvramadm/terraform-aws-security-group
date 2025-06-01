@@ -1,25 +1,22 @@
+# expense-dev-mysql
 resource "aws_security_group" "main" {
-    project_name = var.project_name 
-    environment = var.environment
-    vpc_id = data.aws_ssm_parameter.vpc_id.value
-    name = local.sg_final_name
-    tags = merge(
+  name        = local.sg_final_name
+  description = var.sg_description
+  vpc_id      = var.vpc_id
 
-        var.common_tags,
-        var.sg_tags,
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
 
-        {
-            Name= local.sg_final_name
-        }
-
-    )
-
-    egress  {
-
-        from_port = 0
-        to_port   = 0
-        protocol = "-1"
-        cidr_blocks = ["0.0.0.0/0"]
+  tags = merge(
+    var.common_tags,
+    var.sg_tags,
+    {
+        Name = local.sg_final_name
     }
-  
+  )
 }
