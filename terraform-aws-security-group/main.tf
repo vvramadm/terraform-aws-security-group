@@ -1,5 +1,6 @@
 resource "aws_security_group" "main" {
-
+    project_name = var.project_name 
+    environment = var.environment
     vpc_id = data.aws_ssm_parameter.vpc_id.value
     name = local.sg_final_name
     tags = merge(
