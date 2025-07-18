@@ -17,7 +17,7 @@ variable "vpc_id" {
 
 
 variable "sg_description" {
-default = {}
+
 }
 
 variable "common_tags"{
