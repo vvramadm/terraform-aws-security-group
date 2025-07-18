@@ -14,7 +14,7 @@ variable "sg_tags" {
 variable "vpc_id" {
 
 }
-description = var.sg_description
+
 
 variable "sg_description" {
 default = {}
