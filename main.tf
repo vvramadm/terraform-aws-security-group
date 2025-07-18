@@ -2,6 +2,7 @@ resource "aws_security_group" "main" {
 
     vpc_id = data.aws_ssm_parameter.vpc_id.value
     name = local.sg_final_name
+    description = var.sg_description
     tags = merge(
 
         var.common_tags,
